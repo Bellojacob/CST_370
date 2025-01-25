@@ -31,6 +31,11 @@ class Main
 
         int sum = num1 + num2;
         int diff = num1 - num2;
+
+        if (diff < 0) {
+            diff = num2 - num1;
+            // keep diff positive or zero
+        }
         System.out.println("SUM:"+ sum);
         System.out.println("DIFF:"+ diff);
     }
