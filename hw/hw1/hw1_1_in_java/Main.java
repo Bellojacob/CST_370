@@ -16,6 +16,7 @@
  * Date: MM/DD/YYYY
  */
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 class Main 
@@ -26,39 +27,42 @@ class Main
         // The following is just a sample statement.
         System.out.println("ENTER NUMBERS: ");
 
-        int[] group_a = addGroup();
-        int[] group_b = addGroup();
+        ArrayList<Integer> groupA = new ArrayList<>();
+        ArrayList<Integer> groupB = new ArrayList<>();
+
+        Scanner scanner = new Scanner(System.in);
+
+        int groupAFirstNum = scanner.nextInt();
+
+        for(int i = 0; i < groupAFirstNum; i++){
+            groupA.add(scanner.nextInt());
+        }
+
+        int groupBFirstNum = scanner.nextInt();
+        for(int i = 0; i < groupBFirstNum; i++){
+            groupB.add(scanner.nextInt());
+        }
 
 
 
-        System.out.println("Group A");
-        print(group_a);
-        System.out.println("\nGroup B");
-        print(group_b);
+        System.out.println("Group A\n" + groupA);
+        System.out.println("Group B\n" + groupB);
 
+
+        //check if group a and group b have intersecting nums
+
+        for (int i = 0; i < groupA.size(); i++){
+            if (groupA.get(i).equals(groupB.get(i))) {
+                // if group a at i equals group b at 
+            }
+        }
         
 
     }
 
-    public static int[] addGroup(){
-        Scanner scanner = new Scanner(System.in);
+    
 
-        int groupAmount = scanner.nextInt();
-        System.out.println("total group amount equals " + groupAmount);
-        int[] group = new int[groupAmount];
-
-        for (int i = 0; i < groupAmount; i++){
-            group[i] = scanner.nextInt();
-        }
-
-        return group;
-    }
-
-    public static void print(int[] a){
-        for (int i = 0; i < a.length; i++) {
-            System.out.print(a[i] + " ");
-        }
-    }
+    
     
 
     
