@@ -1,9 +1,9 @@
 /*
  * INSTRUCTIONS:
- *     This is the starting Java code for hw1_1.
+ *     This is the starting Java code for hw1_2.
  *     Note that the current filename is "Main.java". 
  *     When you finish your development, copy the file.
- *     Then, rename the copied file to "Main_hw1_1.java".
+ *     Then, rename the copied file to "Main_hw1_2.java".
  *     After that, upload the renamed file to Canvas.
  */
 
@@ -18,121 +18,96 @@
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 class Main 
-{
-    public static void main(String[] args) 
-    {
-        // Develop your program here.
-        // The following is just a sample statement.
-        // System.out.println("ENTER NUMBERS: ");
-
+ {
+     public static void main(String[] args) 
+     {
+        // create arrays, A for group 1, B for group 2, then C for our final output
         ArrayList<Integer> groupA = new ArrayList<>();
         ArrayList<Integer> groupB = new ArrayList<>();
         ArrayList<Integer> groupC = new ArrayList<>();
-
+        
         Scanner scanner = new Scanner(System.in);
 
-        int groupAFirstNum = scanner.nextInt();
-
-        for(int i = 0; i < groupAFirstNum; i++){
-            groupA.add(scanner.nextInt());
+        // add first group of nums to array A
+        int num1 = scanner.nextInt();
+        for (int i = 0; i < num1; i++) {
+            int num = scanner.nextInt();
+            groupA.add(num);
         }
 
-        int groupBFirstNum = scanner.nextInt();
-        for(int i = 0; i < groupBFirstNum; i++){
-            groupB.add(scanner.nextInt());
+        // add second group of nums to array B
+        int num2 = scanner.nextInt();
+        for (int i = 0; i < num2; i++) {
+            int num = scanner.nextInt();
+            groupB.add(num);
         }
 
+        // print out arrays to visualize our data
+        // System.out.println("Group A");
+        // for (Integer integer : groupA) {
+        //     System.out.print(integer + " ");
+        // }
 
+        // System.out.println();
 
-        // System.out.println("Group A\n" + groupA);
-        // System.out.println("Group B\n" + groupB);
+        // System.out.println("Group B");
+        // for (Integer integer : groupB) {
+        //     System.out.print(integer + " ");
+        // }
 
+        // now we need to compare and find non intersecting numbers or non duplicates
+        // for the non duplicates, lets add them to array C
 
-        //check if group a and group b have intersecting nums
-
-        // loop through group A
-        for (int i = 0; i < groupA.size(); i++){
-            // set flag for is unique number
-            boolean isUnique = true;
-            // loop through group b
-            for (int k = 0; k < groupB.size(); k++){
-                // if group a num == group b num, then is unique is false, and break the loop and check next num
-                if (groupA.get(i) == groupB.get(k)) {
-                    isUnique = false;
-                    break;
-                }
-            }
-            // if we passed through w/o equaling any nums, then it is unique and lets add this to group C
-            if (isUnique) {
-                groupC.add(groupA.get(i));
-            }
-        }
-
-        // now we check group A against group B for unique nums, and lets check group B against group A
-
-        // lets loop through group B
-        for (int i = 0; i < groupB.size(); i++) {
-            // set is unique flag to true
-            boolean isUnique = true;
-            // lets loop through group A
-            for (int k = 0; k < groupA.size(); k++){
-                // lets check if group B num == group A num
-                if (groupB.get(i) == groupA.get(k)) {
-                    // if we found a match then it is not a unique num, lets break the loop
-                    isUnique = false;
-                    break;
-                }
-            }
-            if (isUnique) {
-                // if nothing matched, then it is unique, but we need to check if it is already in group C, the unique nums from the first check
-                // lets loop through group C and check
-                for (int j = 0; j < groupC.size(); j++){
-                    if (groupB.get(i) == groupC.get(j)) {
-                        isUnique = false;
-                        break;
-                    }
-                    
-                }
-                // if we pass these checks we can assume it is unique and add it
-                groupC.add(groupB.get(i));
+        for (int num : groupA) {
+            if (!groupB.contains(num)) {
+                groupC.add(num);
             }
         }
 
-        // remove duplicates if any
-        ArrayList<Integer> uniqueList = new ArrayList<>();
-
-        for (Integer i : groupC){
-            if (!uniqueList.contains(i)) {
-                uniqueList.add(i);
+        // Find numbers in groupB but not in groupA
+        for (int num : groupB) {
+            if (!groupA.contains(num)) {
+                groupC.add(num);
             }
         }
 
-        groupC = uniqueList;
+        Set<Integer> nums = new HashSet<>();
+
+        for (int i : groupC) {
+            nums.add(i);
+        }
+
+        groupC.clear();
+        for (Integer integer : nums) {
+            groupC.add(integer);
+        }
+
+        
+        
 
         Collections.sort(groupC, Collections.reverseOrder());
 
+        
         System.out.print("Answer:");
+        // System.out.println("Group C");
         if (groupC.size() == 0) {
-            System.out.print("NONE");
+            System.out.println("NONE");
+        } else {
+            for (Integer integer : groupC) {
+            System.out.print(integer + " ");
         }
-        for (int i : groupC) {
-            System.out.print(i + " ");
         }
-        
         
 
+     
     }
-
-    
-
-    
-    
-
-    
-
-
 }
-
+ 
+ 
