@@ -1,9 +1,9 @@
 /*
  * INSTRUCTIONS:
- *     This is the starting Java code for hw1_2.
+ *     This is the starting Java code for hw1_1.
  *     Note that the current filename is "Main.java". 
  *     When you finish your development, copy the file.
- *     Then, rename the copied file to "Main_hw1_2.java".
+ *     Then, rename the copied file to "Main_hw1_1.java".
  *     After that, upload the renamed file to Canvas.
  */
 
@@ -30,8 +30,7 @@ class Main
      public static void main(String[] args) 
      {
         // create arrays, A for group 1, B for group 2, then C for our final output
-        ArrayList<Integer> groupA = new ArrayList<>();
-        ArrayList<Integer> groupB = new ArrayList<>();
+         
         ArrayList<Integer> groupC = new ArrayList<>();
         
         Scanner scanner = new Scanner(System.in);
